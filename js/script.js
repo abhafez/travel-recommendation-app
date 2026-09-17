@@ -57,6 +57,11 @@ async function searchDestinations(term) {
     return;
   }
 
+  if (query.includes('countr')) {
+    renderResults(data.countries);
+    return;
+  }
+
   const matchedCountries = data.countries.filter(c =>
     c.name.toLowerCase().includes(query) || query.includes(c.name.toLowerCase())
   );
