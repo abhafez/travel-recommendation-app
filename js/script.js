@@ -71,12 +71,20 @@ async function searchDestinations(term) {
 function setupSearch() {
   const input = document.getElementById('search-input');
   const button = document.getElementById('search-button');
+  const clearButton = document.getElementById('clear-button');
   if (!button || !input) return;
 
   button.addEventListener('click', () => searchDestinations(input.value));
   input.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') searchDestinations(input.value);
   });
+
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      input.value = '';
+      clearResults();
+    });
+  }
 
   document.querySelectorAll('.category-buttons button').forEach(btn => {
     btn.addEventListener('click', () => {
